@@ -1,0 +1,12 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Modules\Core\Transformers\BaseResource;
+
+
+class $CLASS$ extends BaseResource
+{
+
+
+}

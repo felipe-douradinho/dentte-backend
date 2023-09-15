@@ -1,0 +1,20 @@
+{
+    "Patient": true,
+    "Core": true,
+    "User": true,
+    "Referer": true,
+    "Plan": true,
+    "Base": true,
+    "Auth": true,
+    "Expense": true,
+    "Cash": true,
+    "Company": true,
+    "Chair": true,
+    "Localization": true,
+    "Quote": true,
+    "Tooth": true,
+    "Tenancy": true,
+    "Product": true,
+    "Stock": true,
+    "Pipeline": true
+}

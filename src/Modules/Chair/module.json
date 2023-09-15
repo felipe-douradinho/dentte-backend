@@ -1,0 +1,11 @@
+{
+    "name": "Chair",
+    "alias": "chair",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Chair\\Providers\\ChairServiceProvider"
+    ],
+    "files": []
+}

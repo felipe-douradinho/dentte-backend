@@ -1,0 +1,33 @@
+<?php
+
+namespace $NAMESPACE$;
+
+//use EloquentFilter\Filterable;
+
+use Modules\Core\Entities\BaseModel;
+
+class $CLASS$ extends BaseModel
+{
+    //use Filterable;
+
+    protected $fillable = [];
+
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array<string>|bool
+     */
+    protected $guarded = [
+        'id'
+    ];
+
+    protected static function newFactory()
+    {
+        return \Modules\$MODULE$\Database\Factories\$NAME$Factory::new();
+    }
+
+    //public function modelFilter()
+    //{
+    //    return $this->provideFilter(\Modules\$MODULE$\Http\Requests\Filters\$NAME$Filter::class);
+    //}
+}

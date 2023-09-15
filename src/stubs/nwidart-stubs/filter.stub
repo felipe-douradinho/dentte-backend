@@ -1,0 +1,10 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Modules\Core\Http\Requests\BaseFilter;
+
+class $CLASS$ extends BaseFilter
+{
+
+}

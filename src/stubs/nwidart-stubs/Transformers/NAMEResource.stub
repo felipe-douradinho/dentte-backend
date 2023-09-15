@@ -1,0 +1,12 @@
+<?php
+
+namespace Modules\$STUDLY_NAME$\Transformers;
+
+use Modules\Core\Transformers\BaseResource;
+
+
+class $STUDLY_NAME$Resource extends BaseResource
+{
+
+
+}

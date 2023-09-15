@@ -1,0 +1,27 @@
+<?php
+
+namespace Modules\$STUDLY_NAME$\Http\Controllers;
+
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Modules\Core\Http\Controllers\JsonController;
+use Modules\$STUDLY_NAME$\Http\Requests\$STUDLY_NAME$StoreRequest;
+use Modules\$STUDLY_NAME$\Http\Requests\$STUDLY_NAME$UpdateRequest;
+use Modules\$STUDLY_NAME$\Services\$STUDLY_NAME$Service;
+
+
+class $STUDLY_NAME$Controller extends JsonController
+{
+    /**
+     * @param $STUDLY_NAME$Service $service
+     * @param $STUDLY_NAME$StoreRequest $store_request
+     * @param $STUDLY_NAME$UpdateRequest $update_request
+     */
+    public function __construct( $STUDLY_NAME$Service $service, $STUDLY_NAME$StoreRequest $store_request, $STUDLY_NAME$UpdateRequest $update_request )
+    {
+        $this->service = $service;
+        $this->store_request = $store_request;
+        $this->update_request = $update_request;
+    }
+
+}

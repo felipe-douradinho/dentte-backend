@@ -1,0 +1,38 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Modules\$MODULE$\Transformers\$MODEL$Collection;
+use Modules\$MODULE$\Transformers\$MODEL$Resource;
+use Modules\Core\Services\BaseService;
+use Modules\$MODULE$\Repositories\$MODEL$RepositoryInterface;
+
+class $CLASS$ extends BaseService
+{
+
+    /**
+     * @var string $resource_collection
+     */
+    public string $resource_collection = $MODEL$Collection::class;
+
+    /**
+     * @var string $resource
+     */
+    public string $resource = $MODEL$Resource::class;
+
+    /**
+     * @param $MODEL$RepositoryInterface $repository
+     */
+    public function __construct($MODEL$RepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    /**
+     * @return array
+     */
+    //public function getDefaultFilters() : array
+    //{
+    //    return [ 'company_id' => auth()->user()->company_id ];
+    //}
+}

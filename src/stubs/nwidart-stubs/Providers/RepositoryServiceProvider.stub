@@ -1,0 +1,37 @@
+<?php
+
+namespace Modules\$STUDLY_NAME$\Providers;
+
+use Illuminate\Support\ServiceProvider;
+
+use Modules\$STUDLY_NAME$\Repositories\Eloquent\$STUDLY_NAME$Repository;
+use Modules\$STUDLY_NAME$\Repositories\$STUDLY_NAME$RepositoryInterface;
+
+/**
+ * Class RepositoryServiceProvider
+ *
+ * @package Modules\$STUDLY_NAME$\Providers
+ */
+class RepositoryServiceProvider extends ServiceProvider
+{
+    /**
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->app->bind($STUDLY_NAME$RepositoryInterface::class, $STUDLY_NAME$Repository::class);
+    }
+
+    /**
+     * Bootstrap services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        //
+    }
+
+}

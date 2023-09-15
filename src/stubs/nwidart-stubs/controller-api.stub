@@ -1,0 +1,29 @@
+<?php
+
+namespace $CLASS_NAMESPACE$;
+
+use Modules\Core\Traits\CustomAuthorizesRequests;
+use Modules\$MODULE$\Entities\$MODEL$;
+use Modules\$MODULE$\Http\Requests\$MODEL$StoreRequest;
+use Modules\$MODULE$\Http\Requests\$MODEL$UpdateRequest;
+use Modules\Core\Http\Controllers\JsonController;
+use Modules\$MODULE$\Services\$MODEL$Service;
+
+
+class $CLASS$ extends JsonController
+{
+    use CustomAuthorizesRequests;
+
+    protected string $store_request_class   = $MODEL$StoreRequest::class;
+    protected string $update_request_class  = $MODEL$UpdateRequest::class;
+
+
+    /**
+     * @param $MODEL$Service $service
+     */
+    public function __construct( $MODEL$Service $service )
+    {
+        $this->authorizeResource($MODEL$::class);
+        $this->service = $service;
+    }
+}

@@ -1,0 +1,18 @@
+<?php
+
+namespace Modules\$STUDLY_NAME$\Transformers;
+
+use Modules\Core\Transformers\BaseResourceCollection;
+
+
+class $STUDLY_NAME$ResourceCollection extends BaseResourceCollection
+{
+
+    /**
+     * The resource that this resource collects.
+     *
+     * @var string
+     */
+    public $collects = $STUDLY_NAME$Resource::class;
+
+}

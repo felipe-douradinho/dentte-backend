@@ -1,0 +1,27 @@
+<?php
+
+namespace Modules\$STUDLY_NAME$\Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Modules\$STUDLY_NAME$\Entities\$STUDLY_NAME$;
+
+class $STUDLY_NAME$Seeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        //$STUDLY_NAME$::factory()->create([
+        //    'name' => 'Nome Exemplo',
+        //]);
+
+        //$STUDLY_NAME$::factory()
+        //    ->count(20)
+        //    //->hasPosts(1)
+        //    ->create();
+    }
+}

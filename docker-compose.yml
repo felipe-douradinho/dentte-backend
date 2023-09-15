@@ -1,0 +1,106 @@
+version: '3.6'
+
+services:
+
+  php_dentte_backend:
+    #build:
+    #  context: .
+    #  dockerfile: ./docker/php/Dockerfile
+    image: registry.gitlab.com/dentte/dentte-backend/php:8.1
+    container_name: php_dentte_backend
+    restart: always
+    tty: true
+    env_file:
+      - ./.env
+      - ./src/.env
+    environment:
+      PHP_IDE_CONFIG: "serverName=php_dentte_backend"
+      XDEBUG_ENABLED: ${XDEBUG_ENABLED}
+      OS_PLATFORM: ${OS_PLATFORM}
+      ENVIRONMENT: ${ENVIRONMENT}
+      ############################
+      APP_PATH: /var/www/api.12345678901234.dentte.com.br/public
+      ############################
+    working_dir: /var/www/api.12345678901234.dentte.com.br/public
+    ports:
+      - "9000"
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    volumes:
+      - ./src/:/var/www/api.12345678901234.dentte.com.br/public
+      - ./docker/php/php-fpm/php-fpm.denttebackend.conf:/usr/local/etc/php-fpm.d/zz-docker.conf
+    networks:
+      - network_dentte_proxy
+    depends_on:
+      - redis_dentte_backend
+      - mysql_dentte_backend
+
+  # Nginx Service
+  nginx_dentte_backend:
+    image: nginx:alpine
+    container_name: nginx_dentte_backend
+    restart: always
+    tty: true
+    ports:
+      - "4050:80"
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    volumes:
+      # Nginx Main Conf
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      # Nginx Virtual Hosts
+      - ./docker/nginx/sites-enabled/:/etc/nginx/sites-enabled/
+      # Certificates
+      - ./docker/nginx/certificates/api.12345678901234.dentte.com.br/:/var/www/api.12345678901234.dentte.com.br/certificates/
+      # Web Root
+      - ./src/:/var/www/api.12345678901234.dentte.com.br/public
+    depends_on:
+      - php_dentte_backend
+    networks:
+      network_dentte_proxy:
+        aliases:
+          - api.12345678901234.dentte.com.br
+          - local.api.12345678901234.dentte.com.br
+
+  redis_dentte_backend:
+    image: redis:7.0.4-alpine
+    container_name: redis_dentte_backend
+    restart: always
+    ports:
+      - '6382:6379'
+    command: redis-server --save 20 1 --loglevel warning
+    # --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+    networks:
+      - network_dentte_proxy
+    volumes:
+      - cache:/data
+
+  mysql_dentte_backend:
+    image: mysql:5.7.40
+    restart: always
+    container_name: mysql_dentte_backend
+    env_file:
+      - ./.env
+    tty: true
+    environment:
+      ############################
+      MYSQL_ROOT_PASSWORD: "pJ4GXX&#7V*z@LLs"
+      ############################
+    ports:
+      - '3309:3306'
+    volumes:
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d
+      - ./docker/mysql/my.conf:/etc/mysql/conf.d/my.conf
+      - volume_mysql_dentte_backend:/var/lib/mysql
+    networks:
+      - network_dentte_proxy
+
+networks:
+  network_dentte_proxy:
+    driver: bridge
+    name: network_dentte_proxy
+
+volumes:
+  cache:
+    driver: local
+  volume_mysql_dentte_backend:

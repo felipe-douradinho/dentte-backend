@@ -1,0 +1,9 @@
+<?php
+
+namespace Modules\$STUDLY_NAME$\Repositories;
+
+
+interface $STUDLY_NAME$RepositoryInterface
+{
+
+}

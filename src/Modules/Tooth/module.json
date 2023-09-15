@@ -1,0 +1,11 @@
+{
+    "name": "Tooth",
+    "alias": "tooth",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Tooth\\Providers\\ToothServiceProvider"
+    ],
+    "files": []
+}

@@ -1,0 +1,23 @@
+<?php
+
+namespace Modules\$STUDLY_NAME$\Repositories\Eloquent;
+
+use Modules\Core\Repositories\Eloquent\BaseRepository;
+use Modules\$STUDLY_NAME$\Entities\$STUDLY_NAME$;
+use Modules\$STUDLY_NAME$\Repositories\$STUDLY_NAME$RepositoryInterface;
+
+
+class $STUDLY_NAME$Repository extends BaseRepository implements $STUDLY_NAME$RepositoryInterface
+{
+
+    /**
+     * $STUDLY_NAME$Repository constructor.
+     *
+     * @param $STUDLY_NAME$ $model
+     */
+    public function __construct($STUDLY_NAME$ $model)
+    {
+        $this->model = $model;
+    }
+
+}
